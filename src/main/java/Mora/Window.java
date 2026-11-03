@@ -72,6 +72,11 @@ public class Window {
             throw new IllegalStateException("failed to create the GLFW window.");
         }
 
+
+        glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
+        glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouceButtonCallback);
+        glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
+
         //make OpenGl context current
         glfwMakeContextCurrent(glfwWindow);
         //enable vsync

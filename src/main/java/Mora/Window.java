@@ -42,6 +42,14 @@ public class Window {
         init();
         loop();
 
+        //free the memory
+        glfwFreeCallbacks(glfwWindow);
+        glfwDestroyWindow(glfwWindow);
+
+        //terminate GLFW and free the error callback
+        glfwTerminate();
+        glfwSetErrorCallback(null).free();
+
     }
 
     public void init() {

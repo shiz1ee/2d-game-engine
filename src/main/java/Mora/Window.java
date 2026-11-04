@@ -1,5 +1,6 @@
 package Mora;
 
+import Mora.util.Time;
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
@@ -103,6 +104,10 @@ public class Window {
     }
 
     public void loop() {
+
+        float beginTime = Time.getTime();
+        float endTime = Time.getTime();
+
         while (!glfwWindowShouldClose(glfwWindow)) {
             //pull events
             glfwPollEvents();
@@ -120,6 +125,10 @@ public class Window {
             }
 
             glfwSwapBuffers(glfwWindow);
+
+            endTime = Time.getTime();
+            float dt = endTime - beginTime;
+            beginTime = endTime;
         }
 
     }
